@@ -11,13 +11,7 @@ node_identifier = str(uuid.uuid4()).replace('-', '')
 # Instantiate a blockchain
 blockchain = BlockChain()
 
-
-def create_app() -> Flask:
-    app = Flask(__name__)
-    app.config.from_mapping(
-        SECRET_KEY='dev'
-    )
-    return app
+app = Flask(__name__)
 
 
 @app.route('/mine', methods=['GET'])
@@ -104,6 +98,5 @@ def consensus():
 
 
 if __name__ == '__main__':
-    app = create_app()
-    app.run(host='127.0.0.1', port=5000,
-            debug=True, use_reloader=False)
+    print("URl paths:\n", app.url_map, '\n')
+    app.run(host='0.0.0.0', port=5000)

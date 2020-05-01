@@ -1,14 +1,3 @@
-"""
-A blockchain is an immutable, sequential chain of records called Blocks.
-They contain any data, but more importantly they are chained together using hashes.
-If a hash is corrupted by an attacker than all subsequent blocks will have incorrect hashes.
-
-To create/mine new Blocks, the Proof of Work algorithm must be solved. This algorithm discovers a number which
-solves a problem; it must be difficult to solve but easy to verify computationally.
-In this example, difficulty is related to the number of leading zeroes.
-
-To ensure consensus, we make the rule that the longest valid chain is authoritative.
-"""
 import hashlib
 import json
 import time
@@ -34,12 +23,16 @@ class Block(BaseModel):
     previous_hash: str
 
 
+#
+
 def pairwise(iterable):
     """ s -> (s0,s1), (s1,s2), (s2, s3), ... """
     a, b = tee(iterable)
     next(b, None)
     return zip(a, b)
 
+
+#
 
 class BlockChain:
     """ Responsible for managing the chain. """
